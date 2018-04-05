@@ -4,6 +4,7 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 import path from 'path';
+import cors from 'cors';
 
 import models from './models';
 
