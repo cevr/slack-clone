@@ -6,4 +6,8 @@ type Message {
     channel: Channel!
     teams: [Team!]!
 }
+
+type Mutation {
+    createMessage(channelId: Int!, text: String!): Boolean!
+}
 `;

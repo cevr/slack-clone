@@ -4,6 +4,8 @@ const sequelize = new Sequelize('slack-clone', 'postgres', '1052325895', {
     dialect: 'postgres',
     operatorsAliases: Sequelize.Op,
     define: {
+        //causes all names to be snake cased
+        //this is needed because camel casing is not supported in SQL
         underscored: true
     }
 });

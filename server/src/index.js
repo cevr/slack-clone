@@ -7,17 +7,20 @@ import path from 'path';
 
 import models from './models';
 
+// merge all resolvers to a root resolver
 const resolvers = mergeResolvers(
     fileLoader(path.join(__dirname, './graphql/resolvers'))
 );
+
+//merge all types into a root type
 const typeDefs = mergeTypes(
     fileLoader(path.join(__dirname, './graphql/schema'))
 );
 
+//translate string to graphql schema
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
 const PORT = 4000;
-
 const graphqlURL = '/graphql';
 
 app.use(
@@ -25,12 +28,20 @@ app.use(
     bodyParser.json(),
     graphqlExpress({
         schema,
-        context: { models }
+        //inject models into graphql to make alter the database using sequelize
+        context: {
+            models,
+            user: {
+                id: 1
+            }
+        }
     })
 );
 
+//enable graphical GraphQL helper
 app.use('/graphiql', graphiqlExpress({ endpointURL: graphqlURL }));
 
+//initiate the database first then listen to calls
 models.sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log(`Listening on http://localhost:${PORT}`);
