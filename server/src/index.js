@@ -23,6 +23,8 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
 const PORT = 4000;
 const graphqlURL = '/graphql';
+const SECRET = 'supersecret',
+    SECRET2 = 'extrasupersecret';
 
 app.use(
     graphqlURL,
@@ -34,7 +36,9 @@ app.use(
             models,
             user: {
                 id: 1
-            }
+            },
+            SECRET,
+            SECRET2
         }
     })
 );

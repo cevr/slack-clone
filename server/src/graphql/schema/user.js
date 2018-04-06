@@ -12,7 +12,21 @@ type Query {
     allUsers: [User!]
 }
 
+type RegisterResponse {
+    successful: Boolean,
+    user: User,
+    errors: [Error!]
+}
+
+type LoginResponse {
+    successful: Boolean!,
+    token: String,
+    refreshToken: String,
+    errors: [Error!],
+    user: User!
+}
 type Mutation{
-    register(username: String, email: String, password: String): Boolean!
+    register(username: String, email: String, password: String): RegisterResponse!
+    login(email: String, password: String): LoginResponse!
 }
 `;
