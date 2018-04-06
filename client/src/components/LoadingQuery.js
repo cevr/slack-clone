@@ -1,8 +1,9 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import Spinner from 'react-spinkit';
 
 function defaultLoadingRender() {
-    return <div>Loading...</div>;
+    return <Spinner name="ball-scale-ripple" fadeIn="half" />;
 }
 
 export default ({ loadingRender = defaultLoadingRender, ...props }) => {

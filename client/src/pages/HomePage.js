@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Query from '../components/LoadingQuery';
 
-import { allUsersQuery } from '../apollo/queries/userQueries';
+import { ALL_USERS_QUERY } from '../apollo/queries/userQueries';
 class HomePage extends Component {
     renderUsers = users => {
         return users.map(user => (
@@ -14,14 +14,8 @@ class HomePage extends Component {
 
     render() {
         return (
-            <Query query={allUsersQuery}>
-                {({ loading, data: { allUsers } }) => {
-                    return !loading ? (
-                        this.renderUsers(allUsers)
-                    ) : (
-                        <div>Loading...</div>
-                    );
-                }}
+            <Query query={ALL_USERS_QUERY}>
+                {({ data: { allUsers } }) => this.renderUsers(allUsers)}
             </Query>
         );
     }

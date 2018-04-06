@@ -8,11 +8,16 @@
         "apollo-link-http": "^1.5.3",
         "graphql": "^0.13.2",
         "graphql-tag": "^2.8.0",
+        "mobx": "^4.1.1",
+        "mobx-react": "^5.0.0",
         "react": "^16.3.1",
         "react-apollo": "^2.1.2",
         "react-dom": "^16.3.1",
         "react-router-dom": "^4.2.2",
-        "react-scripts": "1.1.4"
+        "react-scripts": "1.1.4",
+        "react-spinkit": "^3.0.0",
+        "semantic-ui-css": "^2.3.1",
+        "semantic-ui-react": "^0.79.1"
     },
     "proxy": "http://localhost:4000",
     "scripts": {
